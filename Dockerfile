@@ -2,6 +2,7 @@
 
 # Build argument for custom certificates directory
 ARG CUSTOM_CERT_DIR="certs"
+ARG SERVER_BASE_URL="http://localhost:8001"
 
 FROM node:20-alpine3.22 AS node_base
 
@@ -11,6 +12,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --legacy-peer-deps
 
 FROM node_base AS node_builder
+ENV SERVER_BASE_URL=${SERVER_BASE_URL}
 WORKDIR /app
 COPY --from=node_deps /app/node_modules ./node_modules
 # Copy only necessary files for Next.js build
