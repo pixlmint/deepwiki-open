@@ -544,6 +544,7 @@ Remember:
 
         try {
           // Create WebSocket URL from the server base URL
+          console.log(JSON.parse(JSON.stringify(process.env)));
           const serverBaseUrl = process.env.SERVER_BASE_URL || 'http://localhost:8001';
           const wsBaseUrl = serverBaseUrl.replace(/^http/, 'ws')? serverBaseUrl.replace(/^https/, 'wss'): serverBaseUrl.replace(/^http/, 'ws');
           const wsUrl = `${wsBaseUrl}/ws/chat`;
