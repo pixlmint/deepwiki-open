@@ -17,7 +17,8 @@ def get_embedder(is_local_ollama: bool = False, use_google_embedder: bool = Fals
     # Determine which embedder config to use
     if embedder_type:
         if embedder_type == 'ollama':
-            embedder_config = configs["embedder_ollama"]
+            # print(configs)
+            embedder_config = configs["embedder"]
         elif embedder_type == 'google':
             embedder_config = configs["embedder_google"]
         elif embedder_type == 'bedrock':
